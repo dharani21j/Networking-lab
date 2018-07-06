@@ -1,14 +1,8 @@
 # echo_server.py
 import socket
-host = ' '        
-port = 12345     
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.bind((host, port))
-s.listen(1)
-conn, addr = s.accept()
-print('Connected by', addr)
-while True:
-    data = conn.recv(1024)
-    if not data: break
-    conn.sendall(data)
-conn.close()
+UDP_IP_ADDRESS= "10.1.24.149"
+UDP_PORT_NUMBER= 6789
+message=("hello python")
+bytestosend=str.encode(message)
+ClientSock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+ClientSock.sendto(bytestosend,(UDP_IP_ADDRESS,UDP_PORT_NUMBER))
